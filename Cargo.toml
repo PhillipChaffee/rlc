@@ -1,0 +1,47 @@
+[package]
+name = "rlc"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.97"
+description = "A tiny media player"
+license = "MIT"
+repository = "https://github.com/phillipchaffee/rlc"
+readme = "README.md"
+keywords = ["media", "player", "video", "audio"]
+categories = ["multimedia"]
+publish = false
+
+[dependencies]
+
+[lints.rust]
+unsafe_code = "deny"
+unused_must_use = "deny"
+unused_crate_dependencies = "warn"
+missing_debug_implementations = "warn"
+unreachable_pub = "warn"
+rust_2018_idioms = { level = "warn", priority = -1 }
+
+[lints.clippy]
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+nursery = { level = "warn", priority = -1 }
+cargo = { level = "warn", priority = -1 }
+# Duplicate transitive versions are policed by cargo-deny, which can skip specific crates.
+multiple_crate_versions = "allow"
+# Fires on every not-yet-const fn, including `main`.
+missing_const_for_fn = "allow"
+allow_attributes = "warn"
+allow_attributes_without_reason = "warn"
+dbg_macro = "warn"
+expect_used = "warn"
+indexing_slicing = "warn"
+panic = "warn"
+todo = "warn"
+undocumented_unsafe_blocks = "warn"
+unimplemented = "warn"
+unwrap_used = "warn"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
